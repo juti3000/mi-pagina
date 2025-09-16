@@ -100,17 +100,29 @@
     <!-- Sección Galería -->
     <section id="galeria" class="gallery">
         <div class="container">
-            <h2 class="section-title">Galería de Eventos</h2>
-            <p class="section-subtitle">Así se ven nuestras graduaciones reales ✨</p>
+          <h2 class="section-title">Galería de Eventos</h2>
+          <p class="section-subtitle">Así se ven nuestras graduaciones reales ✨</p>
             
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="img/graduacion1.jpg" alt="Graduación Colegio San Patricio"></div>
-                <div class="gallery-item"><img src="img/graduacion2.jpg" alt="Decoración temática Instituto Nacional"></div>
-                <div class="gallery-item"><img src="img/graduacion3.jpg" alt="Mesa de dulces Colegio Bilingüe"></div>
-                <div class="gallery-item"><img src="img/graduacion4.jpg" alt="Pista de baile con DJ"></div>
-                <div class="gallery-item"><img src="img/graduacion5.jpg" alt="Photocall personalizado"></div>
-                <div class="gallery-item"><img src="img/graduacion6.jpg" alt="Graduación promoción 2023"></div>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="img/ColegioSanPatricio.jpg" alt="Graduación Colegio San Patricio" class="gallery-img" loading="lazy">
             </div>
+            <div class="gallery-item">
+              <img src="img/InstitutoNacional.jpg" alt="Decoración temática Instituto Nacional" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+              <img src="img/graduacion3.jpg" alt="Mesa de dulces Colegio Bilingüe" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+              <img src="img/graduacion4.jpg" alt="Pista de baile con DJ" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+              <img src="img/graduacion5.jpg" alt="Photocall personalizado" class="gallery-img" loading="lazy">
+            </div>
+            <div class="gallery-item">
+              <img src="img/graduacion6.jpg" alt="Graduación promoción 2023" class="gallery-img" loading="lazy">
+            </div>
+          </div>
         </div>
     </section>
 
@@ -370,6 +382,31 @@ body {
     border-radius: 2px;
 }
 
+#packs {
+    background: url('img/InstitutoNacional.jpg') no-repeat center center/cover;
+    position: relative;
+    padding: 100px 0;
+    color: white; /* Cambia el texto a blanco si el fondo es oscuro */
+}
+
+/* Opcional: agregar un overlay para que las cards resalten */
+#packs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* semi-transparente negro */
+    z-index: 1;
+}
+
+/* Ajustar el contenido para que esté sobre el overlay */
+#packs .container {
+    position: relative;
+    z-index: 2;
+}
+
 /* ===== SECCIÓN HERO ===== */
 .hero {
     min-height: 100vh;
@@ -581,20 +618,34 @@ section {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 1.5rem;
 }
 
 .gallery-item {
-    border-radius: 15px;
+    position: relative;
     overflow: hidden;
+    border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
+    aspect-ratio: 3 / 2; /* fuerza proporción 1200x800 */
 }
 
 .gallery-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* mantiene recorte proporcional */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.05); /* efecto zoom sutil al pasar el mouse */
 }
 
 .gallery-placeholder {
